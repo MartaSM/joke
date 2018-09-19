@@ -1,0 +1,9 @@
+<p>
+  joke-random works!
+</p>
+<button (click)='onClickRandomJoke()'>New Joke</button>
+<p *ngIf='randomJokes'>
+  {{randomJokes.value}}
+</p>
+<button (click)='onClickSaveFavJoke(randomJokes)'>Save joke</button>
+
