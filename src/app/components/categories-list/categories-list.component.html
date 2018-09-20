@@ -1,5 +1,9 @@
-<ul *ngFor='let category of categories'>
-  <li>
-    <button>{{category}}</button>
-  </li>
-</ul>
+
+<div>
+  <div *ngFor='let category of categories'>
+      <button (click)="onClickGetJokeWithCat(category)">{{category}}</button>
+  </div>
+</div>
+<div *ngIf='jokeCat'>
+  {{jokeCat.value}}
+</div>

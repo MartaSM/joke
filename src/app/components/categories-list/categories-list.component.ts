@@ -1,3 +1,4 @@
+import { Joke } from './../../shared/models/joke.model';
 import { JokerService } from './../../shared/services/joker.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesListComponent implements OnInit {
   categories: Array<string>;
-
+  jokeCat: Joke;
   constructor(private jokerService: JokerService) { }
 
   ngOnInit() {
+    this.getCategory();
   }
 
   getCategory(): void{
@@ -20,4 +22,9 @@ export class CategoriesListComponent implements OnInit {
     })
   }
 
+  onClickGetJokeWithCat(category): void {
+    this.jokerService.getJokeWithCat(category).subscribe((joke: Joke) => {
+      this.jokeCat = joke;
+    })
+  }
 }

@@ -12,6 +12,7 @@ export class JokerService {
 
   private jokeRandom: string = 'https://api.chucknorris.io/jokes/random'
   private jokeCategories: string = 'https://api.chucknorris.io/jokes/categories'
+  private jokeWithCat: string = `https://api.chucknorris.io/jokes/random?category=`
   constructor(private http: HttpClient) { }
   
   getRandomJoke(): Observable<Joke>{
@@ -20,5 +21,11 @@ export class JokerService {
 
   displayCategories(): Observable<Array<string>> {
     return this.http.get<Array<string>>(this.jokeCategories)
+  }
+
+  getJokeWithCat(category): Observable<Joke> {
+    let finalMovie : string = this.jokeWithCat + category;
+    console.log(finalMovie)
+    return this.http.get<Joke>(finalMovie)
   }
 }
